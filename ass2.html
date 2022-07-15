@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function makerquest() {
+            ajax = createajaxobject()
+
+            ajax.onreadystatechange = updatePage;
+            var url = "http://localhost:9000/suhas?empno=" + document.f1.empid.value;
+            
+            ajax.open('GET', url, true);
+
+            ajax.send("");
+
+          
+        }
+
+        function updatePage() {
+            if (ajax.readyState == 4)
+                document.getElementById("details").innerHTML = ajax.responseText;
+        }
+        function createajaxobject() {
+            //diff with diff browsers
+            try { //for IE browser
+                var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+                return ajax;
+            }
+            catch (e) {
+                try {   //for non-IE browsers
+                    var ajax = new XMLHttpRequest();
+                    return ajax;
+                }
+                catch (e) {
+                    alert("browser does not support ajax");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="f1">
+
+        enter emp no <input type="text" name="empid" />
+
+
+        <br />
+        <input type="button" value="Get Details" onclick="makerquest()" />
+       
+
+
+    </form>
+    <div id="details"></div>
+
+</body>
+</html>

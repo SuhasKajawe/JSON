@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                var url = "http://localhost/suhas?empid=" + $("inpute[name='empid']").val();
+                $.get(url, function (data, status) {
+                    if (status == "success")
+                        $("#details").html(data);
+                });
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <form name="f1">
+
+        enter emp no <input type="text" name="empid" />
+
+
+        <br />
+        <input type="button" value="Get Details" onclick="makerquest()" />
+
+
+
+    </form>
+    <div id="details"></div>
+
+</body>
+</html>

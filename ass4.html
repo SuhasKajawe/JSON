@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#button").click(function () {
+                var url = "http://localhost:8082/empdetails?did=" + $("#did").val();
+                $.get(url, function (data, status) {
+                    if (status == "success")
+                        $("#details").html(data);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        Enter DeptNo: <input type="text" name="empid" id="did"><br />
+        <input type="button" value="Get Details" id="button"  />
+    </form>
+
+    <div id="details"></div>
+</body>
+</html>

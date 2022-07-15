@@ -18,7 +18,7 @@ con.connect(function(err){
 
 	
 
-app.listen(9000, function(){console.log("server sstart")}) 
+app.listen(13900, function(){console.log("server sstart")}) 
 
 app.get('/file',function(req,res){
 	res.sendFile(__dirname +"/ass2.html");
